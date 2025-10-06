@@ -6,7 +6,7 @@ public class Constants {
 	public static final String DEPOSIT = "deposit";
 	public static final double DAILY_WITHDRAWAL_LIMIT = 600;
 	public static final String WITHDRAWAL = "WITHDRAWAL";
-
+	public static final String ERROR = "error";
 	public static final String MSG_RESET_MESSAGE = "Ledger reset successfully";
 	
 	// error messages
@@ -15,7 +15,8 @@ public class Constants {
 	public static final String ERROR_MSG_EMPTY_TYPE = "Type must be provided";
 	public static final String ERROR_MSG_INSUFFICIENT_BALANCE = "Insufficient balance for withdrawal";
 	public static final String ERROR_MSG_AMOUNT_GREATER_THAN_ZERO = "Amount must be greater than 0";
-	public static final String MSG_INTERNAL_SERVER_ERROR = "Internal server error";
+	public static final String ERROR_MSG_INTERNAL_SERVER_ERROR = "Internal server error";
+	public static final String ERROR_MSG_INVALID_INPUT_FORMAT = "Invalid request format: ";
 	
 	
 }

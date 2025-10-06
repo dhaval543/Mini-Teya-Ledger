@@ -1,11 +1,8 @@
 package com.teya.ledger.controller;
 
-import java.time.ZonedDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -70,9 +67,7 @@ public class LedgerController {
     @GetMapping("/{accId}/TransactionHistory")
     public List<Transaction> getTransactions(
             @PathVariable String accId,
-            @RequestParam(required = false) String type,
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime from,
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) ZonedDateTime to
+            @RequestParam(required = false) String type
     ) {
         return ledgerService.getTransactionHistory(accId, type);
     }
