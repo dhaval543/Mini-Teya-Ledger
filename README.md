@@ -47,5 +47,82 @@ Everything is stored in memory (no database).
 | POST   | `/api/v1/ledger/admin/reset`                | Reset all data    |
 
 
+## Example 
+**Request**
+POST /api/v1/ledger/111/deposit
+```json
+{
+  "amount": 100
+}
+**Response**
+{
+  "id": 1,
+  "type": "deposit",
+  "amount": 100,
+  "timestamp": "2025-10-07T10:31:42.6129622+05:30",
+  "balanceAfter": 100
+}
+
+POST /api/v1/ledger/111/deposit
+
+{
+  "amount": "one hundred"
+}
+
+Error: response status is 400
+
+Invalid request format: Cannot deserialize value of type `java.lang.Double` from String "one hundred": not a valid `Double` value
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 2, column: 13] (through reference chain: com.teya.ledger.request.TransactionRequest["amount"])
+
+POST /api/v1/ledger/111/withdraw
+
+{
+  "amount": 50
+}
+
+{
+  "id": 3,
+  "type": "WITHDRAWAL",
+  "amount": 50,
+  "timestamp": "2025-10-07T10:39:39.941282+05:30",
+  "balanceAfter": 5050
+}
+POST /api/v1/ledger/111/withdraw
+{
+  "amount": 601
+}
+{
+  "error": "Daily withdrawal limit of 600.0 exceeded"
+}
+
+GET /api/v1/ledger/111/balance
+5050
+
+GET /api/v1/ledger/111/TransactionHistory
+
+
+[
+  {
+    "id": 1,
+    "type": "deposit",
+    "amount": 100,
+    "timestamp": "2025-10-07T10:31:42.6129622+05:30",
+    "balanceAfter": 100
+  },
+  {
+    "id": 2,
+    "type": "deposit",
+    "amount": 5000,
+    "timestamp": "2025-10-07T10:37:51.8007256+05:30",
+    "balanceAfter": 5100
+  },
+  {
+    "id": 3,
+    "type": "WITHDRAWAL",
+    "amount": 50,
+    "timestamp": "2025-10-07T10:39:39.941282+05:30",
+    "balanceAfter": 5050
+  }
+]
 
 
